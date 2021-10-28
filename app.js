@@ -30,7 +30,7 @@ app.get("/all", (req, res) => {
 
 // redirecting '/' to get all countries
 app.get("/", (req, res) => {
-	res.redirect("/all");
+	res.send("go to /all to see all countries");
 });
 
 // search by cca3 code
