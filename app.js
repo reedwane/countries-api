@@ -2,10 +2,12 @@ import express from "express";
 import mongoose from "mongoose";
 import Country from "./models/country.js";
 import dotenv from "dotenv";
-import fetch from "node-fetch";
+import cors from "cors";
+// import fetch from "node-fetch";
 
 const app = express();
 dotenv.config();
+app.use(cors());
 
 const PORT = process.env.PORT || 3002;
 const dbURI = process.env.MONGODB_URI;
@@ -45,7 +47,6 @@ app.get("/code/:cca3", (req, res) => {
 				: res.send(result),
 		)
 		.catch((err) => console.log(err));
-	console.log("querying codes...");
 });
 
 // search by multiple cca3 codes .e.g. /codelist/list=mys,nga,jpn,usa
@@ -66,7 +67,6 @@ app.get("/codelist/?list=:lists", (req, res) => {
 				: res.send(result),
 		)
 		.catch((err) => console.log(err));
-	console.log(query);
 });
 
 // filter by region
