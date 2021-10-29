@@ -45,6 +45,28 @@ app.get("/code/:cca3", (req, res) => {
 				: res.send(result),
 		)
 		.catch((err) => console.log(err));
+	console.log("querying codes...");
+});
+
+// search by multiple cca3 codes .e.g. /codelist/list=mys,nga,jpn,usa
+app.get("/codelist/?list=:lists", (req, res) => {
+	const list = req.params.lists.split(",");
+	let listArr = [];
+
+	// forming the $or query array
+	for (let i = 0; i < list.length; i++) {
+		listArr.push({ cca3: list[i].toUpperCase() });
+	}
+	const query = { $or: listArr };
+
+	Country.find(query, { _id: 0, __v: 0 })
+		.then((result) =>
+			result.length === 0
+				? res.send({ Error: "Countries not found" })
+				: res.send(result),
+		)
+		.catch((err) => console.log(err));
+	console.log(query);
 });
 
 // filter by region
@@ -65,13 +87,13 @@ app.get("/:region", (req, res) => {
 			)
 			.catch((err) => res.send(err));
 	}
+	console.log("querying region...");
 });
 
 // filter by partial or full name
 app.get("/:region/:name", (req, res) => {
 	const region = req.params.region;
-	const regionEdit =
-		region[0].toUpperCase() + region.slice(1).toLocaleLowerCase();
+	const regionEdit = region[0].toUpperCase() + region.slice(1).toLowerCase();
 
 	const cName = new RegExp(req.params.name, "i");
 	let query;
@@ -88,6 +110,7 @@ app.get("/:region/:name", (req, res) => {
 				: res.send(result),
 		)
 		.catch((err) => console.log(err));
+	console.log("querying name...");
 });
 
 // catch invalid requests
