@@ -9,7 +9,6 @@
 * {
 	margin: 0;
 	box-sizing: border-box;
-	overflow: scroll;
 }
 
 body {
@@ -51,6 +50,12 @@ section {
 	padding: 2%;
 }
 
+.endpoint,
+.example,
+.sample {
+	overflow-x: scroll;
+}
+
 .one .endpoint,
 .one .example,
 .sample .example {
@@ -62,7 +67,25 @@ footer {
 	margin-top: 5%;
 }
 
+::-webkit-scrollbar {
+	height: 5px;
+}
+::-webkit-scrollbar-track {
+	background: var(--alt-color);
+}
+::-webkit-scrollbar-thumb {
+	background: var(--alt-txt);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--alt-txt);
+}
+
 @media screen and (min-width: 600px) {
+	.endpoint,
+	.example,
+	.sample {
+		overflow: hidden;
+	}
 	body {
 		padding: 5%;
 		max-width: 1024px;
