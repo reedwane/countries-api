@@ -5,9 +5,12 @@ import dotenv from "dotenv";
 import cors from "cors";
 // import fetch from "node-fetch";
 
+// middlewares
 const app = express();
 dotenv.config();
 app.use(cors());
+app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 const PORT = process.env.PORT || 3002;
 const dbURI = process.env.MONGODB_URI;
@@ -32,7 +35,7 @@ app.get("/all", (req, res) => {
 
 // redirecting '/' to get all countries
 app.get("/", (req, res) => {
-	res.send("go to /all to see all countries");
+	res.render("index");
 });
 
 // search by cca3 code
@@ -87,7 +90,7 @@ app.get("/:region", (req, res) => {
 			)
 			.catch((err) => res.send(err));
 	}
-	console.log("querying region...");
+	// console.log("querying region...");
 });
 
 // filter by partial or full name
@@ -110,7 +113,7 @@ app.get("/:region/:name", (req, res) => {
 				: res.send(result),
 		)
 		.catch((err) => console.log(err));
-	console.log("querying name...");
+	// console.log("querying name...");
 });
 
 // catch invalid requests

@@ -1,0 +1,132 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>REST countries API by Ridwan</title>
+</head>
+
+<body>
+    <header>
+        <h1>Countries API</h1>
+        <p>A simple backend for fetching basic details about the countries of the world</p>
+    </header>
+
+    <main>
+        <section class="about">
+            <h2>About</h2>
+            <p>The deta on the database for serving the results were obtained from <a
+                    href="https://restcountries.com/">REST COUNTRIES'</a> version 3.1. This project is a very simpler
+                one and just serves very basic details in a simple json object. The endpoints to fetch from are
+                explained below</p>
+        </section>
+
+        <section class="endpoints one">
+            <h2>All</h2>
+            <div>
+                <p class="endpoint"><a
+                        href="https://reed-countries-api.herokuapp.com/all">https://reed-countries-api.herokuapp.com/all</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="endpoints two">
+            <h2>Search by Name (partial or full)</h2>
+            <div>
+                <p class="endpoint">https://reed-countries-api.herokuapp.com/all/{name}</p>
+                <p class="example">Example: <a
+                        href="https://reed-countries-api.herokuapp.com/all/germ">https://reed-countries-api.herokuapp.com/all/germ</a>
+                </p>
+                <p class="example">Example: <a
+                        href="https://reed-countries-api.herokuapp.com/all/nigeria">https://reed-countries-api.herokuapp.com/all/nigeria</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="endpoints one">
+            <h2>Sort by region</h2>
+            <div>
+                <p class="endpoint">https://reed-countries-api.herokuapp.com/{region}</p>
+                <p class="example">Example: <a
+                        href="https://reed-countries-api.herokuapp.com/europe">https://reed-countries-api.herokuapp.com/europe</a>
+                </p>
+                <p class="example">Example: <a
+                        href="https://reed-countries-api.herokuapp.com/americas">https://reed-countries-api.herokuapp.com/americas</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="endpoints two">
+            <h2>Search by Name (partial or full) under a specific region</h2>
+            <div>
+                <p class="endpoint">https://reed-countries-api.herokuapp.com/{region}/{name}</p>
+                <p class="example">Example: <a
+                        href="https://reed-countries-api.herokuapp.com/europe/germ">https://reed-countries-api.herokuapp.com/europe/germ</a>
+                </p>
+                <p class="example">Example: <a
+                        href="https://reed-countries-api.herokuapp.com/africa/algeria">https://reed-countries-api.herokuapp.com/africa/algeria</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="endpoints one">
+            <h2>Search by CCA3 code</h2>
+            <div>
+                <p class="endpoint">https://reed-countries-api.herokuapp.com/{code}/{cca3}</p>
+                <p class="example">Example: <a
+                        href="https://reed-countries-api.herokuapp.com/code/ngn">https://reed-countries-api.herokuapp.com/code/ngn</a>
+                </p>
+                <p class="example">Example: <a
+                        href="https://reed-countries-api.herokuapp.com/code/mys">https://reed-countries-api.herokuapp.com/code/mys</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="endpoints two">
+            <h2>Search by a list of CCA3 codes</h2>
+            <div>
+                <p class="endpoint">https://reed-countries-api.herokuapp.com/codelist/list={cca3,cca3...}</p>
+                <p class="example">Example: <a
+                        href="https://reed-countries-api.herokuapp.com/codelist/list=ngn">https://reed-countries-api.herokuapp.com/codelist/list=ngn</a>
+                </p>
+                <p class="example">Example: <a
+                        href="https://reed-countries-api.herokuapp.com/codelist/list=mys,jpn,ngn">https://reed-countries-api.herokuapp.com/codelist/list=mys,jpn,ngn</a>
+                </p>
+            </div>
+        </section>
+
+        <section class="sample">
+            <h2>Sample response</h2>
+            <div>
+                <p class="example">Example: <a
+                        href="https://reed-countries-api.herokuapp.com/all/ngn">https://reed-countries-api.herokuapp.com/all/ngn</a>
+                </p>
+                <p class="result">
+                    [{<br>
+                    "name":"Federal Republic of
+                    Nigeria", <br>
+                    "cca3":"NGA", <br>
+                    "flag":"https://flagcdn.com/w320/ng.png",<br>
+                    "population":206139587,<br>
+                    "region":"Africa",<br>
+                    "capital":"Abuja",<br>
+                    "nativeName":"Federal Republic of Nigeria",<br>
+                    "topLevelDomain":".ng",<br>
+                    "currency":"NGN",<br>
+                    "languages":["English"],<br>
+                    "borders":["BEN","CMR","TCD","NER"]}]
+                </p>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Made with love by Abdulkareem Ridwan Gboyega
+    </footer>
+
+</body>
+
+</html>
